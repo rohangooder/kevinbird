@@ -48,4 +48,24 @@ jQuery(document).ready(function ($) {
     // Initial section width update
     updateSectionWidth();
   }
+  /**
+   * Adding Continue Reading link to Posts
+   */
+  $(".the_word_grid li").each(function () {
+    var title = $(this).find(".wp-block-latest-posts__post-title");
+
+    var postURL = $(this)
+      .find(".wp-block-latest-posts__post-title")
+      .attr("href");
+
+    // Create the "Read More" link element
+    var readMoreLink = $("<a>", {
+      text: "Continue reading",
+      href: postURL,
+      class: "read_more_link",
+    });
+
+    // Append the "Read More" link to the post
+    $(this).append(readMoreLink);
+  });
 });

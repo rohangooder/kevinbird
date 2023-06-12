@@ -64,7 +64,7 @@ if (has_post_thumbnail()) {
 <div id="banner" class="container-fluid" style="background-image: url(<?php echo $featured_image_url; ?>);">
 	<div class="row m-0">
 		<div class="col-lg-12">
-			<h1>About the Bird</h1>
+			<h1><?php echo get_the_title( ); ?></h1>
 		</div>
 	</div>
 </div>
