@@ -1,0 +1,879 @@
+// Compile "main.scss" as "css/main.css"
+
+/**
+ * Import Bootstrap sources
+ * https://getbootstrap.com/docs/5.2/customize/sass
+ */
+
+// @import "../node_modules/bootstrap/scss/bootstrap"; // Include all of Bootstrap
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import '../node_modules/bootstrap/scss/functions';
+
+// 2. Include any default variable overrides here
+
+// Options
+$enable-dark-mode: false;
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: true;
+$enable-transitions: true;
+$enable-reduced-motion: true;
+$enable-grid-classes: true;
+$enable-container-classes: true;
+$enable-caret: true;
+$enable-button-pointers: true;
+$enable-rfs: true;
+$enable-validation-icons: true;
+$enable-negative-margins: true;
+$enable-deprecation-messages: true;
+$enable-important-utilities: true;
+$enable-smooth-scroll: true;
+
+$spacer: 1rem;
+
+// Grayscale vars
+$gray-100: #f8f9fa;
+$gray-200: #e9ecef;
+$gray-300: #dee2e6;
+$gray-400: #ced4da;
+$gray-500: #adb5bd;
+$gray-600: #6c757d;
+$gray-700: #495057;
+$gray-800: #343a40;
+$gray-900: #212529;
+
+// Color vars
+$blue: #0d6efd;
+$indigo: #6610f2;
+$purple: #6f42c1;
+$pink: #d63384;
+$red: #dc3545;
+$orange: #fd7e14;
+$yellow: #ffc107;
+$green: #198754;
+$teal: #20c997;
+$cyan: #0dcaf0;
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+$font-family-sans-serif: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans',
+	'Liberation Sans', sans-serif;
+$font-family-serif: Georgia, 'Times New Roman', Times, serif;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+$font-family-roboto: 'Roboto', sans-serif;
+$font-family-playfair: 'Playfair Display', serif;
+$font-family-base: $font-family-roboto;
+
+$link-decoration: none;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/variables-dark';
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import '../node_modules/bootstrap/scss/maps';
+@import '../node_modules/bootstrap/scss/mixins';
+@import '../node_modules/bootstrap/scss/root';
+
+// 6. Optionally include any other parts as needed: Uncomment components to reduce the filesize
+@import '../node_modules/bootstrap/scss/utilities';
+@import '../node_modules/bootstrap/scss/reboot';
+@import '../node_modules/bootstrap/scss/type';
+@import '../node_modules/bootstrap/scss/images';
+@import '../node_modules/bootstrap/scss/containers';
+@import '../node_modules/bootstrap/scss/grid';
+@import '../node_modules/bootstrap/scss/tables';
+@import '../node_modules/bootstrap/scss/forms';
+@import '../node_modules/bootstrap/scss/buttons';
+@import '../node_modules/bootstrap/scss/transitions';
+@import '../node_modules/bootstrap/scss/dropdown';
+@import '../node_modules/bootstrap/scss/button-group';
+@import '../node_modules/bootstrap/scss/nav';
+@import '../node_modules/bootstrap/scss/navbar';
+@import '../node_modules/bootstrap/scss/card';
+@import '../node_modules/bootstrap/scss/accordion';
+@import '../node_modules/bootstrap/scss/breadcrumb';
+@import '../node_modules/bootstrap/scss/pagination';
+@import '../node_modules/bootstrap/scss/badge';
+@import '../node_modules/bootstrap/scss/alert';
+@import '../node_modules/bootstrap/scss/progress';
+@import '../node_modules/bootstrap/scss/list-group';
+@import '../node_modules/bootstrap/scss/close';
+@import '../node_modules/bootstrap/scss/toasts';
+@import '../node_modules/bootstrap/scss/modal';
+@import '../node_modules/bootstrap/scss/tooltip';
+@import '../node_modules/bootstrap/scss/popover';
+@import '../node_modules/bootstrap/scss/carousel';
+@import '../node_modules/bootstrap/scss/spinners';
+@import '../node_modules/bootstrap/scss/offcanvas';
+@import '../node_modules/bootstrap/scss/helpers';
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import '../node_modules/bootstrap/scss/utilities/api';
+
+/**
+ * General
+ */
+
+body {
+	&.page-template-page-full {
+		#main {
+			max-width: 100%;
+		}
+	}
+
+	/* If WP-Adminbar is visible */
+	&.admin-bar {
+		#header.fixed-top {
+			top: var(--wp-admin--admin-bar--height);
+		}
+
+		.edit-link a {
+			color: #fff !important;
+			font-weight: normal !important;
+			text-decoration: none !important;
+
+			&::before {
+				content: '\270E';
+				display: inline-block;
+				margin-right: 5px;
+			}
+		}
+	}
+}
+
+img {
+	vertical-align: middle;
+}
+
+h1, h2, h3 {
+	font-family: $font-family-playfair;
+}
+
+h1 {
+	font-style: normal;
+	font-weight: 500;
+	font-size: 65px;
+	line-height: 67px;
+}
+
+h2 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 55px;
+	line-height: 67px;
+	color: #000000;
+}
+
+h3 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 42px;
+	line-height: 52px;
+	color: #000000;
+}
+
+h4 {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 15px;
+	color: #000000;
+}
+
+p {
+	font-size: 17px;
+}
+
+.img-fluid {
+	img {
+		width: 100%;
+	}
+}
+
+.kevin_red_btn {
+	a {
+		font-size: 21px !important;
+		border: 1px solid #dc1d2e !important;
+		padding: 0.8rem 1.8rem !important;
+		&:hover {
+			background: #662D91 !important;
+			border: 1px solid #662D91 !important;
+		}
+	}
+}
+.kevin_transparent_btn  {
+	a {
+		font-size: 21px !important;
+		padding: 0 !important;
+    	border: 0 !important;
+		box-shadow: none !important;
+		&:hover {
+			color: #662D91 !important;
+		}
+	}
+}
+.kevin_list {
+	list-style-type: none;
+	padding: 0;
+	li {
+		position: relative;
+		line-height: 2rem;
+		font-size: 17px;
+		&::before {
+			content: "";
+			width: 20px;
+			height: 100%;
+			background-image: url('/wp-content/uploads/2023/06/red_checkmark.svg');
+			background-position: center;
+			background-size: contain;
+			background-repeat: no-repeat;
+			position: absolute;
+			left: 0;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		padding-left: 30px; 
+	}
+}
+
+#banner {
+	min-height: 500px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	h1 {
+		color: #fff;
+	}
+}
+
+#breadcrumb {
+	padding: 3rem 0;
+	a, span {
+		font-style: normal;
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 18px;
+		color: #898989;
+	}
+}
+
+/* Header */
+
+#header {
+	.search-form {
+		min-width: 250px;
+	}
+}
+
+.navbar-brand {
+	img {
+		height: auto;
+	}
+}
+
+.navbar-static-top {
+	margin-bottom: $grid-gutter-width;
+}
+
+#navbar {
+	#menu-kevin-main {
+		column-gap: 16px;
+		.menu-item {
+			.nav-link {
+				font-style: normal;
+				font-weight: 400;
+				font-size: 18px;
+				line-height: 21px;
+
+				color: #FFFFFF;
+			}
+			&.phone_link {
+				padding-left: 55px;
+				position: relative;
+				&::before {
+					content: "";
+					left: 30px;
+					position: absolute;
+					top: 50%;
+					-webkit-transform: translateY(-50%);
+					transform: translateY(-50%);
+					width: 23px;
+					height: 23px;
+					background: url(/wp-content/uploads/2023/06/phonr_icon.svg);
+					background-position: center;
+					background-size: contain;
+					background-repeat: no-repeat;
+				}
+			}
+		}
+	}
+}
+
+/* Main */
+
+#main {
+	margin-top: 0;
+	&.post-39 {
+		&.container {
+			width: 100%;
+			max-width: 100%;
+		}
+	}
+}
+
+.post-41 {
+	background-color: #F7F8F8;
+}
+
+#sidebar {
+	h4 {
+		font-style: normal;
+		font-weight: 600;
+		font-size: 42px;
+		line-height: 46px;
+		color: #FFFFFF;
+	}
+}
+
+/**
+ * Home Page Style Start
+ */
+.hero {
+	background: url(/wp-content/uploads/2023/06/Home-hero.png);
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.home_about {
+	padding-top: 9.5rem;
+	h2 {
+		margin-bottom: 2rem;
+	}
+	p {
+		color: #838383;
+	}
+	.bordered_img {
+		margin: 0;
+		margin-top: -15rem;
+		border: 10px solid #fff;
+	}
+	.home_author_info {
+		margin: 2rem 0 !important;
+		h4 {
+			font-family: $font-family-playfair;
+		}
+	}
+}
+
+.home_services {
+	padding: 6rem 0 3rem;
+	h4 {
+		font-family: $font-family-playfair;
+		font-size: 22px;
+		line-height: 32px;
+	}
+	.card {
+		padding: 32px;
+	}
+	.wp-block-columns {
+		&.wp-container-22 {
+			align-items: center !important;
+		}
+	}
+	.kevin_list {
+		margin-bottom: 3rem;
+	}
+}
+
+.home_testimonials {
+	padding: 6rem 0 3rem;
+	h3 {
+		margin-bottom: 3.2rem;
+	}
+	.card {
+		background: #FFFFFF;
+		box-shadow: 0px 4px 20px rgba(131, 131, 131, 0.25);
+		border-radius: 8px;
+		padding: 35px;
+		border: 0;
+		p {
+			color: #838383;
+			min-height: 120px;
+		}
+		h4 {
+			font-family: $font-family-playfair;
+			font-weight: 400;
+			font-size: 24px;
+			line-height: 32px;
+		}
+	}
+}
+
+
+/**
+ * About Page Style Start
+ */
+#main {
+	&.post-41 {
+		.wp-block-group {
+			&:where(.wp-block-group.has-background) {
+				padding: 1.5em;
+			}
+		}
+		.wp-block-columns {
+			&:where(.wp-block-columns.has-background) {
+				padding: 1.5em;
+			}
+		}
+		.is-style-logos-only {
+			box-shadow: 0px 5px 15px -10px #000;
+			margin-top: -50px;
+			margin-bottom: 0;
+			position: relative;
+			z-index: 9;
+			padding: 1rem;
+			background: #FFFFFF;
+			border-radius: 6px;
+		}
+		.wp-container-7 {
+			.wp-block-column {
+				&:first-child {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					.wp-block-buttons {
+						width: 100%;
+						justify-content: space-between;
+					}
+				}
+				h5 {
+					font-style: normal;
+					font-weight: 400;
+					font-size: 32px;
+					line-height: 20px;
+					color: #000000;
+				}
+				.phone_link {
+					position: relative;
+					padding-left: 33px;
+					&::before {
+						content: "";
+						width: 28px;
+						height: 28px;
+						position: absolute;
+						top: 50%;
+						left: 0;
+						transform: translateY(-50%);
+						background-image: url(/wp-content/uploads/2023/06/phone_icon.svg);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: center;
+					}
+				}
+				.email_link {
+					position: relative;
+					padding-left: 33px;
+					&::before {
+						content: "";
+						width: 28px;
+						height: 28px;
+						position: absolute;
+						top: 50%;
+						left: 0;
+						transform: translateY(-50%);
+						background-image: url(/wp-content/uploads/2023/06/email_icon.svg);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: center;
+					}
+				}
+				.web_link {
+					position: relative;
+					padding-left: 33px;
+					&::before {
+						content: "";
+						width: 28px;
+						height: 28px;
+						position: absolute;
+						top: 50%;
+						left: 0;
+						transform: translateY(-50%);
+						background-image: url(/wp-content/uploads/2023/06/website_icon.svg);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: center;
+					}
+				}
+				.location_link {
+					position: relative;
+					padding-left: 33px;
+					&::before {
+						content: "";
+						width: 28px;
+						height: 28px;
+						position: absolute;
+						top: 50%;
+						left: 0;
+						transform: translateY(-50%);
+						background-image: url(/wp-content/uploads/2023/06/address_icon.svg);
+						background-repeat: no-repeat;
+						background-size: contain;
+						background-position: center;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Footer Style Start
+ */
+#footer {
+	padding: 50px 0;
+	position: relative;
+	overflow: hidden;
+	.footer_cta {
+		padding: 60px;
+		.gform_required_legend {
+			display: none;
+		}
+		.gfield textarea {
+			height: 150px;
+		}
+		#gform_submit_button_1 {
+			background: #DC1D2E;
+			border-radius: 5px;	
+			color: #fff;
+			border: none;
+    		padding: 12px;
+			&:hover {
+				background-color: #662d91;
+			}
+		}
+	}
+
+	h5 {
+		font-weight: 700;
+		font-size: 28px;
+		color: #fff;
+		margin-bottom: 1rem;
+	}
+	a {
+		color: #fff;
+		font-size: 17px;
+	}
+	p {
+		color: #fff;
+		margin: 0;
+	}
+	&.before {
+		&:before {
+			content: "";
+			width: 100%;
+			height: 140%;
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-image: url(/wp-content/uploads/2023/06/Black-cta-shape.png);
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			z-index: -1;
+		}
+	}
+}
+
+#footer_bottom {
+	background-color: #DC1D2E;
+	p {
+		font-size: 14px;
+	}
+}
+.common_footer {
+	gap: 3rem;
+	.col-lg-3 {
+		width: calc(25% - 3rem);
+		padding: 0;
+	}
+}
+
+/**
+ * Responsive Design for Desktops
+ */
+@media only screen and (min-width: 992px) {
+	.home_testimonials {
+		.wp-container-30 {
+			flex-wrap: wrap !important;
+			.wp-block-column {
+				flex-basis: calc(33.33% - 2em) !important;
+			}
+		}
+	}
+}
+
+/**
+* Responsive Design for size between 992px and 1100px
+*/
+
+@media only screen and (min-width: 992px) and (max-width: 1100px) {
+	#footer {
+		.footer_cta {
+			padding: 1.8rem;
+		}
+		h5 {
+			font-size: 22px;
+		}
+	}
+	.common_footer {
+		gap: 1rem;
+		.col-lg-3 {
+			width: calc(25% - 1rem);
+			padding: 0;
+		}
+	}
+	#sidebar {
+		h4 {
+			color: #fff;
+			font-size: 30px;
+			font-style: normal;
+			font-weight: 600;
+			line-height: 46px;
+		}
+	}
+	#main {
+		&.post-41 {
+			.wp-container-7 {
+				flex-wrap: wrap !important;
+				.wp-block-column {
+					width: 100%;
+					flex-basis: 100%;
+					.wp-block-buttons {
+						justify-content: start !important;
+					}
+				}.wp-block-image {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+/**
+* Responsive Design for size between 768px and 992px
+*/
+
+@media only screen and (min-width: 768px) and (max-width: 992px) {
+	.container {
+		max-width: 95%;
+	}
+	#navbar {
+		#menu-kevin-main {
+			column-gap: 0;
+			.menu-item {
+				.nav-link {
+					font-size: 15px;
+				}
+			}
+		}
+	}
+	.home_services {
+		padding: 6rem 0 3rem;
+		.card {
+			padding: 22px;
+		}
+		.wp-container-22 {
+			flex-wrap: wrap !important;
+		}
+		.wp-container-22 > .wp-block-column {
+			flex-basis: 100% !important;
+		}
+	}
+	.home_testimonials {
+		.card {
+			padding: 25px;
+			p {
+				min-height: 120px;
+			}
+		}
+		.wp-container-30 {
+			flex-wrap: wrap !important;
+			.wp-block-column {
+				flex-basis: calc(50% - 2em) !important;
+			}
+		}
+	}
+	.common_footer {
+		gap: 0rem;
+		.col-lg-3 {
+			width: calc(100% - 0rem);
+			padding: 0;
+		}
+	}
+	#main {
+		&.post-41 {
+			.wp-container-7 {
+				flex-wrap: wrap !important;
+				.wp-block-column {
+					width: 100%;
+					flex-basis: 100%;
+					.wp-block-buttons {
+						justify-content: start !important;
+					}
+				}.wp-block-image {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Responsive Design for Tablets
+ */
+ @media only screen and (min-width: 600px) and (max-width: 782px) {
+	.container {
+		max-width: 95%;
+	}
+	#navbar {
+		#menu-kevin-main {
+			column-gap: 0;
+			.menu-item {
+				.nav-link {
+					font-size: 15px;
+				}
+			}
+		}
+	}
+	.home_about {
+		padding: 4rem 0 2rem;
+		.wp-container-7 {
+			flex-direction: column-reverse;
+		}
+		.bordered_img {
+			margin: 0rem;
+		}
+	}
+	.home_services {
+		padding: 4rem 0 2rem;
+		.wp-container-15 {
+			.wp-block-column {
+				flex-basis: 0 !important;
+				flex-grow: 1;
+			}
+		}
+		.wp-container-20 {
+			.wp-block-column {
+				flex-basis: 0 !important;
+				flex-grow: 1;
+			}
+		}
+	}
+	.home_testimonials {
+		padding: 4rem 0 2rem;
+		.card {
+			padding: 25px;
+			p {
+				min-height: 200px;
+			}
+		}
+		.wp-container-30 {
+			flex-wrap: wrap !important;
+			.wp-block-column {
+				flex-basis: calc(50% - 2em) !important;
+			}
+		}
+	}
+	.common_footer {
+		gap: 0rem;
+		.col-lg-3 {
+			width: calc(100% - 0rem);
+			padding: 0;
+		}
+	}
+	#main {
+		&.post-41 {
+			.wp-container-7 {
+				flex-wrap: wrap !important;
+				.wp-block-column {
+					width: 100%;
+					flex-basis: 100%;
+					.wp-block-buttons {
+						justify-content: start !important;
+					}
+				}.wp-block-image {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Responsive Design for Mobiles
+ */
+@media only screen and (max-width: 600px) {
+	.home_about {
+		padding: 4rem 0 2rem;
+		.wp-container-7 {
+			flex-direction: column-reverse;
+		}
+		.bordered_img {
+			margin: 0rem;
+		}
+	}
+	.home_services {
+		padding: 4rem 0 2rem;
+	}
+	.home_testimonials {
+		padding: 4rem 0 2rem;
+		.card {
+			padding: 25px;
+			p {
+				min-height: 40px;
+			}
+		}
+	}
+	#footer {
+		.footer_cta {
+			padding: 1rem;
+		}		
+		h5 {
+			font-size: 22px;
+		}
+	}
+	.common_footer {
+		gap: 0rem;
+		.col-lg-3 {
+			width: calc(100% - 0rem);
+			padding: 1rem;
+		}
+	}
+	#main {
+		&.post-41 {
+			.wp-container-7 {
+				flex-wrap: wrap !important;
+				.wp-block-column {
+					width: 100%;
+					flex-basis: 100%;
+					.wp-block-buttons {
+						justify-content: start !important;
+					}
+				}.wp-block-image {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+
